@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Threading.Tasks;
 using AutoUpdaterDotNET;
 
 namespace TestApp
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
 
-            const String updateUrl = "https://github.com/radu-andrei-oprea/TestAppUpdates/version.xml";
+            const String updateUrl = "https://github.com/radu-andrei-oprea/TestAppUpdates/releases/tag/Latest/version.xml";
             AutoUpdater.Start(updateUrl);
 
 

@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><item>    <version>1.3.0</version>    <url>https://yourdomain.com/yourapp/YourAppInstaller.msi</url>    <mandatory>false</mandatory>    <changelog>https://yourdomain.com/yourapp/changelog.html</changelog></item>
+<?xml version="1.0" encoding="utf-8"?><item>  <version>1.4</version>  <url>https://github.com/radu-andrei-oprea/TestAppUpdates/releases/tag/Latest/setup.exe</url>  <mandatory>false</mandatory>  <!--<changelog>https://yourdomain.com/yourapp/changelog.html</changelog>--></item>

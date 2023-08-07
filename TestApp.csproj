@@ -8,8 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="setup.exe" />
+    <None Remove="version.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
-    <PackageReference Include="Clowd.Squirrel" Version="2.9.42" />
   </ItemGroup>
 
 </Project>
