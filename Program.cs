@@ -15,8 +15,8 @@ namespace TestApp
             AutoUpdater.Start(latestURL);
 
             // print text
-            Console.WriteLine("Ninth change:");
-            const string Value = "AutoUpdate prelude";
+            Console.WriteLine("Tenth change:");
+            const string Value = "If you see this then it works";
             Console.WriteLine(Value);
             Console.WriteLine("\nPress any key to close...");
             _ = Console.ReadKey();
