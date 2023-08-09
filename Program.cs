@@ -14,8 +14,8 @@ namespace TestApp
             AutoUpdater.Start(latestURL);
 
             // print text
-            Console.WriteLine("12th change:");
-            const string Value = "possible versions fix";
+            Console.WriteLine("last change:");
+            const string Value = "If you see this text then congratulations";
             Console.WriteLine(Value);
             Console.WriteLine("\nPress any key to close...");
             _ = Console.ReadKey();
