@@ -116,7 +116,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -129,8 +129,8 @@ jobs:
 
     env:
       Solution_Name: TestApp.sln
-      InnoSetup_Script: path/to/your/InnoSetupScript.iss
-      Installer_Output: path/to/your/installer/output
+      InnoSetup_Script: InnoScript.iss
+      Installer_Output: Installer/setup
 
     steps:
       - name: Checkout Repository
