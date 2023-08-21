@@ -23,7 +23,7 @@ jobs:
       - name: Prepare Virtual Bin Directory
         run: |
             mkdir vbin
-            cp -r TestApp\bin\Release\net6.0-windows\app.publish\* vbin\
+            cp -r bin/Release/net6.0-windows/app.publish/* vbin\
         working-directory: ${{ github.workspace }}
     
       - name: Checkout Repository
