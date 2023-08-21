@@ -24,7 +24,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
             mkdir vbin
-            copy bin\Release\net6.0-windows\app.publish\* vbin\
+            cp -r bin/Release/net6.0-windows/app.publish/* vbin\
     
       - name: Checkout Repository
         uses: actions/checkout@v2
