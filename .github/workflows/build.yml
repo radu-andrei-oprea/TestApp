@@ -20,13 +20,13 @@ jobs:
       Installer_Output: Installer\
 
     steps:
-      - name: List Contents of bin/Release/net6.0-windows
-        run: |
-          ls -R ${{ github.workspace }}\bin\Release\net6.0-windows\app.publish
-
       - name: Print Current Directory
         run: |
           echo "Current Directory: $(pwd)"
+          
+      - name: List Contents of bin/Release/net6.0-windows
+        run: |
+          ls -R ${{ github.workspace }}\bin\Release\net6.0-windows\app.publish
     
       - name: Prepare Virtual Bin Directory
         working-directory: ${{ github.workspace }}
