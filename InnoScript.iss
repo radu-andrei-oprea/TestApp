@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TestAppInno"
-#define MyAppVersion "2.0.0.0"
+#define MyAppVersion "2.2.0.0"
 #define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "TestApp.exe"
@@ -15,7 +15,6 @@ SignTool=signtool $f
 AppId={{C00E327D-F613-430E-84C0-846CBB619E1A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -23,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputDir=D:\repos\TestAppMock
+OutputDir=Installer
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
@@ -36,18 +35,18 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "windowsdesktop-runtime-6.0.20-win-x64.exe"; DestDir: "{tmp}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.WinForms.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\setup.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.application"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\TestApp.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\AutoUpdater.NET.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\Launcher.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "TestApp\bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.WinForms.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\setup.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.application"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.deps.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\TestApp.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\AutoUpdater.NET.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\Launcher.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\net6.0-windows\app.publish\Microsoft.Web.WebView2.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
