@@ -25,7 +25,9 @@ jobs:
           echo "Current Directory: $(pwd)"
 
       - name: Print contents of current directory
-        run: ls -R
+        run: |
+          cd ../..
+          ls -R
        
       - name: Prepare Virtual Bin Directory
         working-directory: ${{ github.workspace }}
