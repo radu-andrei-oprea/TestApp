@@ -25,12 +25,8 @@ jobs:
           echo "Current Directory: $(pwd)"
 
       - name: Print contents of current directory
-          ls -R
-          
-      #- name: List Contents of bin/Release/net6.0-windows
-      #  run: |
-      #    ls -R ${{ github.workspace }}\bin\Release\net6.0-windows\app.publish
-    
+        run: ls -R
+       
       - name: Prepare Virtual Bin Directory
         working-directory: ${{ github.workspace }}
         run: |
