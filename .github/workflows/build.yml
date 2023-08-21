@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: List Contents of bin/Release/net6.0-windows
         run: |
-          ls -R bin/Release/net6.0-windows/app.publish
+          ls -R ${{ github.workspace }}/bin/Release/net6.0-windows/app.publish
 
       - name: Print Current Directory
         run: |
