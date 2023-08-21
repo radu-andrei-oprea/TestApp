@@ -1,0 +1,66 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: TestApp.sln
+      InnoSetup_Script: InnoScript.iss
+      Installer_Output: Installer\
+
+    steps:
+      - name: Prepare Virtual Bin Directory
+        working-directory: ${{ github.workspace }}
+        run: |
+            mkdir vbin
+            ## cp -r bin/Release/net6.0-windows/app.publish/* vbin\
+    
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install .NET 6 SDK
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.x
+
+      - name: Restore Dependencies
+        run: dotnet restore $env:Solution_Name
+
+      - name: Build Application
+        run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
+
+      # Assuming your tests are part of the project
+      - name: Run Tests
+        run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
+
+      # Build the Inno Setup installer
+      - name: Build Inno Setup Installer
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /Q $env:InnoSetup_Script
+        shell: cmd
+
+      # Upload the installer
+      - name: Upload Installer
+        uses: actions/upload-artifact@v2
+        with:
+          name: Installer
+          path: $env:Installer_Output
+
+      - name: Notify on Success
+        if: success()
+        run: echo "Build and deployment succeeded!"
+
+      - name: Notify on Failure
+        if: failure()
+        run: echo "Build and deployment failed!"
