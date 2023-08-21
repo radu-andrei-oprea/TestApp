@@ -23,6 +23,7 @@ jobs:
       - name: Print Current Directory
         run: |
           echo "Current Directory: $(pwd)"
+          ls -R $(pwd)
           
       - name: List Contents of bin/Release/net6.0-windows
         run: |
