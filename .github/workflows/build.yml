@@ -31,6 +31,9 @@ jobs:
       - name: Restore Dependencies
         run: dotnet restore $env:Solution_Name
 
+      - name: Build Application
+        run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
+
       - name: Print Current Directory
         run: |
           echo "Current Directory: $(pwd)"
@@ -45,9 +48,6 @@ jobs:
         run: |
             mkdir vbin
             cp -r bin/Release/net6.0-windows/app.publish/* vbin\
-    
-      - name: Build Application
-        run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
 
       # Assuming your tests are part of the project
       - name: Run Tests
