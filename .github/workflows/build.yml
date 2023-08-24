@@ -20,23 +20,6 @@ jobs:
       Installer_Output: Installer\
 
     steps:
-      - name: Print Current Directory
-        run: |
-          echo "Current Directory: $(pwd)"
-
-      - name: Print contents of current directory
-          ls -R
-          
-      - name: List Contents of bin/Release/net6.0-windows
-        run: |
-          ls -R ${{ github.workspace }}\bin\Release\net6.0-windows\app.publish
-    
-      - name: Prepare Virtual Bin Directory
-        working-directory: ${{ github.workspace }}
-        run: |
-            mkdir vbin
-            cp -r bin/Release/net6.0-windows/app.publish/* vbin\
-    
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -50,6 +33,21 @@ jobs:
 
       - name: Build Application
         run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
+
+      - name: Print Current Directory
+        run: |
+          echo "Current Directory: $(pwd)"
+
+      - name: Print contents of current directory
+        run: |
+          cd ../..
+          ls -R
+       
+      - name: Prepare Virtual Bin Directory
+        working-directory: ${{ github.workspace }}
+        run: |
+            mkdir vbin
+            cp -r bin/Release/net6.0-windows/app.publish/* vbin\
 
       # Assuming your tests are part of the project
       - name: Run Tests
