@@ -50,9 +50,15 @@ jobs:
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer
         run: |
-          #"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /Q $env:InnoSetup_Script
+          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScript.iss"
         shell: cmd
+
+      # Sign the Inno Setup installer
+      - name: Sign Inno Setup Installer
+        run: |
+          $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
+          sign /tr  http://timestamp.digicert.com /td sha256 /fd sha256 /a .\Installer\setup.exe
 
       # Upload the installer
       - name: Upload Installer
