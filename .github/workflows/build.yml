@@ -43,11 +43,11 @@ jobs:
           cd ../..
           ls -R
        
-      - name: Prepare Virtual Bin Directory
-        working-directory: ${{ github.workspace }}
-        run: |
-            mkdir vbin
-            cp -r bin/Release/net6.0-windows/app.publish/* vbin\
+      # - name: Prepare Virtual Bin Directory
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #       mkdir vbin
+      #       cp -r bin/Release/net6.0-windows/app.publish/* vbin\
 
       # Assuming your tests are part of the project
       - name: Run Tests
