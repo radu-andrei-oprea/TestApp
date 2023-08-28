@@ -16,7 +16,6 @@ jobs:
 
     env:
       Solution_Name: TestApp.sln
-      InnoSetup_Script: InnoScript.iss
 
     steps:
       - name: Checkout Repository
@@ -43,9 +42,16 @@ jobs:
         run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
 
       # Build the Inno Setup installer
-      - name: Build Inno Setup Installer
+      - name: Build Inno Setup Installer - Debug
+        if: matrix.build_type == 'debug'
         run: |
-          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScript.iss"
+          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
+        shell: cmd
+
+      - name: Build Inno Setup Installer - Release
+        if: matrix.build_type == 'release'
+        run: |
+          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
         shell: cmd
 
       # Sign the Inno Setup installer
