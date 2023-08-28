@@ -17,7 +17,6 @@ jobs:
     env:
       Solution_Name: TestApp.sln
       InnoSetup_Script: InnoScript.iss
-      Installer_Output: Installer\
 
     steps:
       - name: Checkout Repository
