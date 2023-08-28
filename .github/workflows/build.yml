@@ -33,14 +33,10 @@ jobs:
 
       - name: Build Application
         run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
-
-      - name: Print Current Directory
-        run: |
-          echo "Current Directory: $(pwd)"
-
+      
+      # Print contents of directory
       - name: Print contents of current directory
         run: |
-          cd ../..
           ls -R
       
       # Assuming your tests are part of the project
@@ -50,7 +46,6 @@ jobs:
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer
         run: |
-          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScript.iss"
         shell: cmd
 
@@ -58,7 +53,7 @@ jobs:
       - name: Sign Inno Setup Installer
         run: |
           $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
-          sign /tr  http://timestamp.digicert.com /td sha256 /fd sha256 /a .\Installer\setup.exe
+          & sign /tr  http://timestamp.digicert.com /td sha256 /fd sha256 /a .\Installer\setup.exe
 
       # Upload the installer
       - name: Upload Installer
