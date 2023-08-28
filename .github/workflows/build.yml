@@ -33,14 +33,10 @@ jobs:
 
       - name: Build Application
         run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
-
-      - name: Print Current Directory
-        run: |
-          echo "Current Directory: $(pwd)"
-
+      
+      # Print contents of directory
       - name: Print contents of current directory
         run: |
-          cd ../..
           ls -R
       
       # Assuming your tests are part of the project
