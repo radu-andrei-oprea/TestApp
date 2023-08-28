@@ -58,7 +58,7 @@ jobs:
       - name: Sign Inno Setup Installer
         run: |
           $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
-          & $signtool sign /tr  http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
+          & $signtool sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
 
       # Upload the installer
       - name: Upload Installer
