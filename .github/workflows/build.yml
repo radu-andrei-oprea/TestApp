@@ -50,7 +50,6 @@ jobs:
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer
         run: |
-          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScript.iss"
         shell: cmd
 
