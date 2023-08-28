@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Installer
-          path: $env:Installer_Output
+          path: ./
 
       - name: Notify on Success
         if: success()
