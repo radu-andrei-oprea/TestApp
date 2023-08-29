@@ -36,7 +36,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "windowsdesktop-runtime-6.0.20-win-x64.exe"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "bin\Debug\net6.0-windows\Microsoft.Web.WebView2.WinForms.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\Debug\net6.0-windows\Microsoft.Web.WebView2.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\Debug\net6.0-windows\setup.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\Debug\net6.0-windows\TestApp.application"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\Debug\net6.0-windows\TestApp.deps.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\Debug\net6.0-windows\TestApp.dll"; DestDir: "{app}"; Flags: ignoreversion
