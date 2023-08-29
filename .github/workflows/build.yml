@@ -39,13 +39,13 @@ jobs:
      
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer - Debug
-        if: matrix.build_type == 'debug'
+        if: matrix.build_type == 'Debug'
         run: |
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
         shell: cmd
 
       - name: Build Inno Setup Installer - Release
-        if: matrix.build_type == 'release'
+        if: matrix.build_type == 'Release'
         run: |
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
         shell: cmd
