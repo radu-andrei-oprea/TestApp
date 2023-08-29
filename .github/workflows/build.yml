@@ -60,8 +60,10 @@ jobs:
       #     $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
       #     & $signtool sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
 
-      - name: Print directory again
-        run: ls 
+      - name: Find setup.exe location
+        run: |
+          cd ../..
+          find / -name "setup.exe" 2>/dev/null
         
       # Upload the installer
       - name: Upload Installer
