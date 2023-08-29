@@ -16,7 +16,6 @@ jobs:
 
     env:
       Solution_Name: TestApp.sln
-      InnoSetup_Script: InnoScript.iss
 
     steps:
       - name: Checkout Repository
@@ -37,29 +36,37 @@ jobs:
       - name: Print contents of current directory
         run: |
           ls -R
-      
-      # Assuming your tests are part of the project
-      - name: Run Tests
-        run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
-
+     
       # Build the Inno Setup installer
-      - name: Build Inno Setup Installer
+      - name: Build Inno Setup Installer - Debug
+        if: matrix.build_type == 'Debug'
         run: |
-          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScript.iss"
+          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
         shell: cmd
 
-      # Sign the Inno Setup installer
-      - name: Sign Inno Setup Installer
+      - name: Build Inno Setup Installer - Release
+        if: matrix.build_type == 'Release'
         run: |
-          $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
-          & sign /tr  http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
+          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
+        shell: cmd
 
+      # # Sign the Inno Setup installer
+      # - name: Sign Inno Setup Installer
+      #   run: |
+      #     $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
+      #     & $signtool sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
+
+      - name: Find setup.exe location
+        run: |
+          dir
+          Get-ChildItem D:\ -Recurse -Filter "*setup*" | Select-Object FullName
+        
       # Upload the installer
       - name: Upload Installer
         uses: actions/upload-artifact@v2
         with:
           name: Installer
-          path: $env:Installer_Output
+          path: ./
 
       - name: Notify on Success
         if: success()
