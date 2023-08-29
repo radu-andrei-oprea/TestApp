@@ -62,8 +62,10 @@ jobs:
 
       - name: Find setup.exe location
         run: |
-          cd ../..
+          pwd
+          cd ..
           find / -name "setup.exe" 2>/dev/null
+        shell: bash
         
       # Upload the installer
       - name: Upload Installer
