@@ -59,7 +59,7 @@ jobs:
       - name: Find setup.exe location
         run: |
           dir
-          Get-ChildItem C:\ -Recurse -Filter "*setup*" | Select-Object FullName
+          Get-ChildItem D:\ -Recurse -Filter "*setup*" | Select-Object FullName
         
       # Upload the installer
       - name: Upload Installer
