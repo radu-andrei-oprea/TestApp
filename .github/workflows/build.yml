@@ -59,8 +59,7 @@ jobs:
       - name: Find setup.exe location
         run: |
           dir
-          cd ../../
-          dir /s /b | findstr "setup"
+          dir C:\ /s /b | findstr "setup"
         
       # Upload the installer
       - name: Upload Installer
