@@ -47,6 +47,7 @@ jobs:
       - name: Build Inno Setup Installer - Release
         if: matrix.build_type == 'Release'
         run: |
+          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
         shell: cmd
 
@@ -66,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Installer
-          path: ./Installer
+          path: .\Installer
 
       - name: Notify on Success
         if: success()
