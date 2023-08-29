@@ -8,9 +8,9 @@ on:
 jobs:
   build:
 
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
+    # strategy:
+    #   matrix:
+    #     configuration: [Debug, Release]
 
     runs-on: windows-latest
 
@@ -38,14 +38,14 @@ jobs:
           ls -R
      
       # Build the Inno Setup installer
-      - name: Build Inno Setup Installer - Debug
-        if: matrix.build_type == 'Debug'
-        run: |
-          iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
-        shell: cmd
+      # - name: Build Inno Setup Installer - Debug
+      #   if: matrix.build_type == 'Debug'
+      #   run: |
+      #     iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
+      #   shell: cmd
 
       - name: Build Inno Setup Installer - Release
-        if: matrix.build_type == 'Release'
+        # if: matrix.build_type == 'Release'
         run: |
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
         shell: cmd
