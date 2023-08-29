@@ -60,7 +60,7 @@ jobs:
         run: |
           dir
           cd ../../
-          dir /s /b *setup*
+          dir /s /b | findstr "setup"
         
       # Upload the installer
       - name: Upload Installer
