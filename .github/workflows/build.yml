@@ -39,22 +39,25 @@ jobs:
      
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer - Debug
-        if: matrix.build_type == 'Debug'
+        if: matrix.configuration == 'Debug'
         run: |
+          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptDebug.iss"
         shell: cmd
 
       - name: Build Inno Setup Installer - Release
-        if: matrix.build_type == 'Release'
+        if: matrix.configuration == 'Release' 
         run: |
+          mkdir Installer
           iscc /O+ /DSIGNCODE="no" /DDEVBUILD="yes" "InnoScriptRelease.iss"
         shell: cmd
-
+      
+          
       # # Sign the Inno Setup installer
       # - name: Sign Inno Setup Installer
       #   run: |
       #     $signtool = "C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe"
-      #     & $signtool sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a .\setup.exe
+      #     & $signtool sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a .\Installer\setup.exe
 
       - name: Find setup.exe location
         run: |
@@ -66,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Installer
-          path: ./
+          path: .\Installer
 
       - name: Notify on Success
         if: success()
