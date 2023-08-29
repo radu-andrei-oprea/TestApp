@@ -58,9 +58,9 @@ jobs:
 
       - name: Find setup.exe location
         run: |
-          pwd
+          dir
           cd ../../
-          find . -name "*setup*"
+          dir /s /b *setup*
         
       # Upload the installer
       - name: Upload Installer
