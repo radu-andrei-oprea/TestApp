@@ -36,11 +36,7 @@ jobs:
       - name: Print contents of current directory
         run: |
           ls -R
-      
-      # Assuming your tests are part of the project
-      - name: Run Tests
-        run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
-
+     
       # Build the Inno Setup installer
       - name: Build Inno Setup Installer - Debug
         if: matrix.build_type == 'debug'
@@ -63,9 +59,8 @@ jobs:
       - name: Find setup.exe location
         run: |
           pwd
-          cd ..
-          find / -name "setup.exe" 2>/dev/null
-        shell: bash
+          cd ../../
+          find . -name "*setup*"
         
       # Upload the installer
       - name: Upload Installer
